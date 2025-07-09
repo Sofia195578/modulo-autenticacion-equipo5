@@ -24,17 +24,10 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     return;
   }
 
-if (user && user.password === password) {
-  saveToken(user.email, user.name); // 👉 Enviamos también el nombre
-  window.location.href = "dashboard.html";
-}
-
   // Éxito
   localStorage.removeItem(key);
   saveToken(email, user.name); // 🔐 Guardamos también el nombre del usuario
   window.location.href = "dashboard.html";
-
-
 });
 
 // 🔐 Función modificada para guardar el nombre también
