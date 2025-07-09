@@ -1,5 +1,5 @@
 if (!isLoggedIn()) {
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 }
 
 const user = getCurrentUser();
@@ -14,5 +14,5 @@ if (user) {
 function logout() {
   localStorage.removeItem("token");
   localStorage.removeItem("userEmail");
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 }

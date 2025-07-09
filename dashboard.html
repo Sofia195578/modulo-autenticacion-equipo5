@@ -99,7 +99,7 @@ const token = localStorage.getItem("token");
   const logueado = localStorage.getItem("logueado");
   
   if (!token && !logueado) {
-    window.location.href = "login.html";
+    window.location.href = "index.html";
   } else {
     const userName = localStorage.getItem("userName") || logueado;
     if (userName) {
