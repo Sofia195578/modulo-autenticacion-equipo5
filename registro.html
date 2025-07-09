@@ -23,7 +23,7 @@
 
         .form-container {
             background-color: #ffffff;
-            padding: 2rem;
+            padding: 10px;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             width: 100%;
@@ -48,11 +48,23 @@
 
         input[type="text"],
         input[type="email"],
-        input[type="password"] {
+        input[type="password"],
+        input[type="checkbox"] {
             width: 100%;
             padding: 0.7rem;
             border: 1px solid #ccc;
             border-radius: 5px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            margin-right: 0.5rem;
         }
 
         .btn {
@@ -77,13 +89,18 @@
 
         .btn-secondary {
             background-color: transparent;
-            
-            color:#0e2e54;
+            color: #0e2e54;
             text-decoration: underline;
         }
 
         .btn-secondary:hover {
             color: #1151a0;
+        }
+
+        .error {
+            color: #dc3545;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -91,10 +108,10 @@
 <body>
     <div class="form-container">
         <h2>Registro</h2>
-        <form id="registroForm">
+        <form id="registerForm">
             <div class="form-group">
-                <label for="nombre">Nombre completo</label>
-                <input type="text" id="nombre" name="nombre" required>
+                <label for="name">Nombre completo</label>
+                <input type="text" id="name" name="name" required>
             </div>
             <div class="form-group">
                 <label for="email">Correo electrónico</label>
@@ -103,7 +120,17 @@
             <div class="form-group">
                 <label for="password">Contraseña</label>
                 <input type="password" id="password" name="password" required>
+                <small class="error">Mínimo 8 caracteres con mayúscula, número y símbolo</small>
             </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirmar contraseña</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">Acepto los términos y condiciones</label>
+            </div>
+            <p id="errorMsg" class="error"></p>
             <button type="submit" class="btn btn-primary">Registrarse</button>
         </form>
         <button class="btn btn-secondary" onclick="window.location.href='login.html'">
@@ -111,28 +138,8 @@
         </button>
     </div>
 
-    <script>
-        const form = document.getElementById('registroForm');
-
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const nombre = document.getElementById('nombre').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            const usuario = {
-                nombre,
-                email,
-                password
-            };
-
-            localStorage.setItem('usuarioRegistrado', JSON.stringify(usuario));
-
-            alert('¡Registro exitoso!');
-            form.reset();
-        });
-    </script>
+    <script src="js/auth.js"></script>
+    <script src="js/register.js"></script>
 </body>
 
 </html>
