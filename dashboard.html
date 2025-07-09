@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="profile-picture">
+        <img src="https://i.pravatar.cc/100" alt="Profile">
+        <h3 id="userName">Cargando...</h3>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li class="active">Profile</li>
+          <li>Job</li>
+          <li>Salary Details</li>
+          <li>Time Off</li>
+          <li>Documents</li>
+          <li>Training</li>
+          <li>Benefits</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-bar">
+        <span>July 24, 2020, 4:10 PM</span>
+        <div class="top-icons">
+          <span>🔔</span>
+          <span>⚙️</span>
+          <span>🚪</span>
+        </div>
+      </header>
+
+      <!-- Profile Card -->
+      <section class="card profile-card">
+        <img src="https://i.pravatar.cc/100" alt="Helen" class="avatar">
+        <div>
+          <h2 id="mainName">Nombre Usuario <span class="badge">Admin</span></h2>
+          <p>Head of HR Department</p>
+          <p>Email: helenvozhicki@gmail.com</p>
+          <p>Phone: +709 123 456 42</p>
+        </div>
+      </section>
+
+      <!-- Basic Information -->
+      <section class="card info-card">
+        <h3>Basic Information</h3>
+        <div class="info-row">
+          <div><strong>Hire Date:</strong> August 3, 2019</div>
+          <div><strong>Worked for:</strong> 3 years, 9 months</div>
+          <div><strong>Employee ID:</strong> 7790</div>
+          <div><strong>SSN:</strong> XXX-XX-1960</div>
+        </div>
+      </section>
+
+      <!-- Occupation -->
+      <section class="card occupation-card">
+        <h3>Occupation</h3>
+        <div class="chips">
+          <div class="chip">Full-Time</div>
+          <div class="chip">Engineering</div>
+          <div class="chip">Seattle, WA</div>
+        </div>
+      </section>
+
+      <!-- Calendar and Events -->
+      <section class="card calendar-card">
+        <h3>Upcoming Events</h3>
+        <ul>
+          <li>Design review – 9:00 AM</li>
+          <li>Project sync – 10:30 AM</li>
+        </ul>
+      </section>
+
+      <!-- Onboarding -->
+      <section class="card onboarding-card">
+        <h3>Onboarding <span class="progress">1/5 completed</span></h3>
+        <ul class="onboarding-list">
+          <li>Prepare work space</li>
+          <li>Meeting with HR</li>
+          <li>Company video</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <script>
+  const name = localStorage.getItem("userName");
+  if (name) {
+    document.getElementById("userName").textContent = name;
+    document.getElementById("mainName").textContent = name + " ";
+    const badge = document.createElement("span");
+    badge.className = "badge";
+    badge.textContent = "Admin";
+    document.getElementById("mainName").appendChild(badge);
+  } else {
+    location.href = "index.html";
+  }
+</script>
+</body>
+</html>
