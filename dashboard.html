@@ -91,17 +91,24 @@
     </main>
   </div>
 
-  <script>
-  const name = localStorage.getItem("userName");
-  if (name) {
-    document.getElementById("userName").textContent = name;
-    document.getElementById("mainName").textContent = name + " ";
+<script src="auth.js"></script>
+<script src="dashboard.js"></script>
+<script>
+  // Verifica si el usuario está logueado
+const token = localStorage.getItem("token");
+  const logueado = localStorage.getItem("logueado");
+  
+  if (!token && !logueado) {
+    window.location.href = "login.html";
+  } else {
+    const userName = localStorage.getItem("userName") || logueado;
+    if (userName) {
+      document.getElementById("userName").textContent = userName;
+      document.getElementById("mainName").textContent = userName + " "}
     const badge = document.createElement("span");
     badge.className = "badge";
     badge.textContent = "Admin";
     document.getElementById("mainName").appendChild(badge);
-  } else {
-    location.href = "index.html";
   }
 </script>
 </body>
