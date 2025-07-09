@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #007aff, #66ccff);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.dashboard {
+  display: flex;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 1200px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.sidebar {
+  background: #0f2e53;
+  color: white;
+  width: 250px;
+  padding: 20px;
+}
+
+.profile-picture {
+  text-align: center;
+}
+
+.profile-picture img {
+  width: 80px;
+  border-radius: 50%;
+}
+
+.menu ul {
+  list-style: none;
+  margin-top: 30px;
+}
+
+.menu li {
+  padding: 10px 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.menu li.active,
+.menu li:hover {
+  color: #00d4ff;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.top-bar {
+  grid-column: span 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card {
+  background: #f9fafc;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.profile-card {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.profile-card .avatar {
+  width: 100px;
+  border-radius: 50%;
+}
+
+.badge {
+  background-color: #00c6ff;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.info-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.chips {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.chip {
+  background: #00bcd4;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.calendar-card ul,
+.onboarding-list {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.progress {
+  float: right;
+  color: #2196f3;
+}
