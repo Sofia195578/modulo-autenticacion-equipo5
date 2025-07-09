@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iniciar Sesión</title>
-
   <style>
     body {
       margin: 0;
@@ -15,7 +14,6 @@
       justify-content: center;
       height: 100vh;
     }
-
     .container {
       background: #ffffff;
       padding: 30px;
@@ -24,13 +22,11 @@
       width: 350px;
       text-align: center;
     }
-
     h2 {
       margin-bottom: 20px;
       color: #0B2A4A;
       font-weight: 600;
     }
-
     input {
       display: block;
       width: 100%;
@@ -38,16 +34,14 @@
       margin: 10px 0;
       border: 1px solid #dcdfe6;
       border-radius: 8px;
-      box-sizing: border-box; 
+      box-sizing: border-box;
       transition: border-color 0.3s;
     }
-
     input:focus {
       outline: none;
       border-color: #0e2e54;
       box-shadow: 0 0 4px rgba(23, 193, 232, 0.4);
     }
-
     button {
       width: 100%;
       padding: 12px;
@@ -59,89 +53,38 @@
       font-weight: bold;
       transition: background 0.3s ease;
     }
-
     button:hover {
       background: #0c2747;
     }
-
+    .error {
+      color: #dc3545;
+      margin-top: 10px;
+    }
     .toggle-link {
       margin-top: 12px;
       display: block;
       color: #0e2e54;
       font-size: 0.95em;
       text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .toggle-link:hover {
-      color: #12A8CC;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .success {
-      color: #28a745;
-    }
-
-    .error {
-      color: #dc3545;
     }
   </style>
 </head>
 <body>
-  <div class="container" id="loginForm">
-    <h2>Iniciar Sesión</h2>
-    <input type="text" id="loginUsername" placeholder="Usuario" required>
-    <input type="password" id="loginPassword" placeholder="Contraseña" required>
-    <button onclick="login()">Ingresar</button>
-    <p id="loginMsg"></p>
-    <!-- Enlace listo para redirigir cuando tengas la ruta -->
-    <a href="/registro" class="toggle-link">¿No tienes una cuenta? Regístrate</a>
+  <!-- Formulario con ID "loginForm" (para que funcione tu JS) -->
+  <div class="container">
+    <form id="loginForm">  <!-- 👈 Añadí el formulario con el ID correcto -->
+      <h2>Iniciar Sesión</h2>
+      <!-- Cambié los IDs para que coincidan con tu login.js -->
+      <input type="text" id="email" placeholder="Correo electrónico" required>  <!-- 👈 ID "email" -->
+      <input type="password" id="password" placeholder="Contraseña" required>  <!-- 👈 ID "password" -->
+      <button type="submit">Ingresar</button>
+      <p id="errorMsg" class="error"></p>  <!-- 👈 ID "errorMsg" -->
+    </form>
+    <a href="register.html" class="toggle-link">¿No tienes una cuenta? Regístrate</a>
   </div>
 
-  <div class="container hidden" id="dashboard" style="display: none;">
-    <h2>Bienvenida, <span id="userName"></span> 👋</h2>
-    <p>Has iniciado sesión correctamente.</p>
-    <button onclick="cerrarSesion()">Cerrar sesión</button>
-  </div>
-
-  <script>
-    function login() {
-      const username = document.getElementById('loginUsername').value.trim();
-      const password = document.getElementById('loginPassword').value.trim();
-      const msg = document.getElementById('loginMsg');
-
-      let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-      const usuario = usuarios.find(u => u.username === username && u.password === password);
-
-      if (usuario) {
-        localStorage.setItem("logueado", username);
-        mostrarDashboard(username);
-      } else {
-        msg.textContent = "Usuario o contraseña incorrectos.";
-        msg.className = "error";
-      }
-    }
-
-    function mostrarDashboard(username) {
-      document.getElementById('loginForm').style.display = "none";
-      document.getElementById('dashboard').style.display = "block";
-      document.getElementById('userName').textContent = username;
-    }
-
-    function cerrarSesion() {
-      localStorage.removeItem("logueado");
-      location.reload();
-    }
-
-    window.onload = function () {
-      const logueado = localStorage.getItem("logueado");
-      if (logueado) {
-        mostrarDashboard(logueado);
-      }
-    };
-  </script>
+  <!-- Cargamos auth.js antes que login.js -->
+  <script src="js/auth.js"></script>
+  <script src="js/login.js"></script>
 </body>
 </html>
