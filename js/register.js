@@ -30,5 +30,5 @@ document.getElementById("registerForm").addEventListener("submit", function (e) 
   users.push({ name, email, password, role: "usuario" });
   localStorage.setItem("users", JSON.stringify(users));
   alert("Registro exitoso.");
-  window.location.href = "index.html";
+  window.location.href = "login.html";
 });
